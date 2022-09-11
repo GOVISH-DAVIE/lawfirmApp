@@ -47,7 +47,7 @@ class DB {
     );
   ''');
 
-    final stmt = db.prepare('INSERT INTO checkout (ddata) VALUES (?)');
+    final stmt = db.prepare('INSERT INTO user (ddata) VALUES (?)');
     stmt.execute([jsonEncode(u)]);
     stmt.dispose();
     return true;
@@ -56,6 +56,12 @@ class DB {
   bool addUser(User user) {
     print(user.toJson());
     return (createUser(user, user.userId));
+  }
+
+  User getUser() {
+    final ResultSet resultSet = db.select('SELECT * FROM user WHERE id=1');
+    return (User.fromJson(jsonDecode(resultSet[0]['ddata'])));
+    // return jsonDecode(resultSet.rows);
   }
 
   CheckingData? checkout() {

@@ -17,7 +17,7 @@ class Auth extends ChangeNotifier {
   bool get isloggedIn => _isloggedIn;
   bool _stateLoading = false;
   bool get stateLoading => _stateLoading;
-  Api _api = locator<Api>();
+  final Api _api = locator<Api>();
   // var get user = _authenticationService.user;
   Future<bool> login({username, pass}) async {
     debugPrint(username);
@@ -25,7 +25,23 @@ class Auth extends ChangeNotifier {
         {'username': username, 'password': pass}).then((value) {
       print(value);
       User _user = User.fromJson(value.data);
+      _currentUser = _user;
+      _isloggedIn = true;
       return _db.addUser(_user);
     });
+  }
+
+  Auth() {
+    getuser();
+  }
+
+  getuser() {
+    User u = _db.getUser();
+    print(u.token);
+    _currentUser = u;
+    if (u != null) {
+      _isloggedIn = true;
+    }
+    notifyListeners();
   }
 }
