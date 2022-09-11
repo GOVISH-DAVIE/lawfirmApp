@@ -24,10 +24,11 @@ class Auth extends ChangeNotifier {
     return await _api.postNoHeaders('account/api/login',
         {'username': username, 'password': pass}).then((value) {
       print(value);
-      User _user = User.fromJson(value.data);
-      _currentUser = _user;
-      _isloggedIn = true;
-      return _db.addUser(_user);
+      // User _user = User.fromJson(value.data);
+      // _currentUser = _user;
+      // _isloggedIn = true;
+      // return _db.addUser(_user);
+      return true;
     });
   }
 

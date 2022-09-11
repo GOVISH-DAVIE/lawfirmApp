@@ -499,14 +499,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         image: AssetImage(
                                             'images/workreport.png')),
                                     Text(
-                                      'Daily Work',
+                                      'Files',
                                       maxLines: 2,
-                                      style: kTextStyle.copyWith(
-                                          color: kTitleColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      'Report',
                                       style: kTextStyle.copyWith(
                                           color: kTitleColor,
                                           fontWeight: FontWeight.bold),

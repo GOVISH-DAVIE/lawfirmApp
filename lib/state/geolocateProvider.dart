@@ -22,7 +22,7 @@ class GeolocatorProvider extends ChangeNotifier {
       _position = value;
       getLocationDetails(value.latitude, value.latitude);
     });
-    _checkingData = _db.fetchAllCheckin();
+    // _checkingData = _db.fetchAllCheckin();
     notifyListeners();
   }
 
@@ -41,12 +41,12 @@ class GeolocatorProvider extends ChangeNotifier {
   }
 
   checkIn() {
-    _checkingData = _db.checkin(position: positionLocation);
+    // _checkingData = _db.checkin(position: positionLocation);
     notifyListeners();
   }
 
   checkOut() {
-    _checkingData = _db.checkout();
+    // _checkingData = _db.checkout();
     notifyListeners();
   }
 }
