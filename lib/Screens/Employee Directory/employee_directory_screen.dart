@@ -64,115 +64,54 @@ class _EmployeeDirectoryState extends State<EmployeeDirectory> {
                     const SizedBox(
                       height: 20.0,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        border:
-                            Border.all(color: kGreyTextColor.withOpacity(0.5)),
-                      ),
-                      child: ListTile(
-                        onTap: () {
-                          const EmployeeDetails().launch(context);
-                        },
-                        leading: Image.asset('images/emp1.png'),
-                        title: Text(
-                          'Sahidul islam',
-                          style: kTextStyle,
-                        ),
-                        subtitle: Text(
-                          'Joining Date: 01, Jun 2021 ',
-                          style: kTextStyle.copyWith(color: kGreyTextColor),
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: kGreyTextColor,
-                        ),
-                      ),
+                    ElevatedButton(
+                      onPressed: () {
+                        clientsProviderController.getClients();
+                      },
+                      child: Text(
+                          "${clientsProviderController.auth.currentUser?.userId}"),
                     ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        border:
-                            Border.all(color: kGreyTextColor.withOpacity(0.5)),
-                      ),
-                      child: ListTile(
-                        onTap: () {
-                          const EmployeeDetails().launch(context);
-                        },
-                        leading: Image.asset('images/emp2.png'),
-                        title: Text(
-                          'Mehedi Mohammad',
-                          style: kTextStyle,
-                        ),
-                        subtitle: Text(
-                          'Joining Date: 01, Jun 2021 ',
-                          style: kTextStyle.copyWith(color: kGreyTextColor),
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: kGreyTextColor,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        border:
-                            Border.all(color: kGreyTextColor.withOpacity(0.5)),
-                      ),
-                      child: ListTile(
-                        onTap: () {
-                          const EmployeeDetails().launch(context);
-                        },
-                        leading: Image.asset('images/emp3.png'),
-                        title: Text(
-                          'Ibne Riead',
-                          style: kTextStyle,
-                        ),
-                        subtitle: Text(
-                          'Joining Date: 01, Jun 2021 ',
-                          style: kTextStyle.copyWith(color: kGreyTextColor),
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: kGreyTextColor,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        border:
-                            Border.all(color: kGreyTextColor.withOpacity(0.5)),
-                      ),
-                      child: ListTile(
-                        onTap: () {
-                          const EmployeeDetails().launch(context);
-                        },
-                        leading: Image.asset('images/emp4.png'),
-                        title: Text(
-                          'Emily Jones',
-                          style: kTextStyle,
-                        ),
-                        subtitle: Text(
-                          'Joining Date: 01, Jun 2021 ',
-                          style: kTextStyle.copyWith(color: kGreyTextColor),
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: kGreyTextColor,
-                        ),
-                      ),
-                    ),
+                    ...clientsProviderController.clients
+                        .map(
+                          (e) => Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              border: Border.all(
+                                  color: kGreyTextColor.withOpacity(0.5)),
+                            ),
+                            child: ListTile(
+                              onTap: () {
+                                EmployeeDetails(
+                                  client: e,
+                                ).launch(context);
+                              },
+                              leading: Image.asset('images/emp1.png'),
+                              title: Text(
+                                "${e.firstName} ${e.lastName}",
+                                style: kTextStyle,
+                              ),
+                              subtitle: Column(
+                                children: [
+                                  Text(
+                                    '${e.email} ',
+                                    style: kTextStyle.copyWith(
+                                        color: kGreyTextColor),
+                                  ),
+                                  Text(
+                                    '${e.phone} ',
+                                    style: kTextStyle.copyWith(
+                                        color: kGreyTextColor),
+                                  ),
+                                ],
+                              ),
+                              trailing: const Icon(
+                                Icons.arrow_forward_ios,
+                                color: kGreyTextColor,
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
                   ],
                 ),
               ),

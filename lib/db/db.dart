@@ -8,25 +8,16 @@ import 'package:sqflite/sqflite.dart';
 // import 'package:sqlite3/sqlite3.dart';
 
 class DB {
-  late Database db;
+  Database? db;
 
   DB() {
-    //   db.execute('''
-    //   CREATE TABLE checkout (
-    //     id INTEGER NOT NULL PRIMARY KEY,
-    //     ddata TEXT NOT NULL
-    //   );
-    // ''');
-    //   db.execute('''
-    //   CREATE TABLE if not exists user (
-    //     id INTEGER NOT NULL PRIMARY KEY,
-    //     ddata TEXT NOT NULL
-    //   );
-    // ''');
     init();
   }
   init() async {
-    Database _db = await openDatabase('my_db.db');
+    Database _db = await openDatabase(
+      'my_db.db',
+    );
+    db = _db;
   }
 
   // CheckingData? checkin({GeoData? position}) {
@@ -52,26 +43,40 @@ class DB {
 
   Future<bool> createUser(User user, id) async {
     Map u = user.toJson();
-    await db.execute('''
+    await db?.execute('''
     CREATE TABLE if not exists user (
       id INTEGER NOT NULL PRIMARY KEY,
       ddata TEXT NOT NULL
     );
   ''');
 
-    final stmt = db.insert('user', {'ddata': jsonEncode(u)});
+    final stmt = db?.insert('user', {'ddata': jsonEncode(u)});
+    print('user created');
     return true;
   }
 
-  Future addUser(User user) {
+  Future<bool> addUser(User user) {
     print(user.toJson());
     Future l = (createUser(user, user.userId));
     return l.then((value) => value);
   }
 
-  getUser() {
-    var resultSet = db.query('user', where: 'id=1');
-    // return (User.fromJson(jsonDecode(resultSet[0]['ddata'])));
+  Future<List> getUser() async {
+    await init();
+    if ((await db!
+            .query('sqlite_master', where: 'name = ?', whereArgs: ['user']))
+        .isEmpty) {
+      await db?.execute('''
+    CREATE TABLE if not exists user (
+      id INTEGER NOT NULL PRIMARY KEY,
+      ddata TEXT NOT NULL
+    );
+  ''');
+    }
+    var resultSet = await (db?.query('user', limit: 1, orderBy: 'id'));
+    return resultSet!.toList();
+
+    // return (User.fromJson(jsonDecode(resultSet![0]['ddata'])));
     // return jsonDecode(resultSet.rows);
   }
 

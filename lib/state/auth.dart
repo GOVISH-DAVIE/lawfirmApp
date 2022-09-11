@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:hrm_employee/api/api.dart';
 import 'package:hrm_employee/models/user.dart';
@@ -24,11 +26,12 @@ class Auth extends ChangeNotifier {
     return await _api.postNoHeaders('account/api/login',
         {'username': username, 'password': pass}).then((value) {
       print(value);
-      // User _user = User.fromJson(value.data);
-      // _currentUser = _user;
-      // _isloggedIn = true;
-      // return _db.addUser(_user);
-      return true;
+      print('value');
+      User _user = User.fromJson(value.data);
+      _currentUser = _user;
+      _isloggedIn = true;
+      notifyListeners();
+      return _db.addUser(_user);
     });
   }
 
@@ -37,12 +40,22 @@ class Auth extends ChangeNotifier {
   }
 
   getuser() {
-    User u = _db.getUser();
-    print(u.token);
-    _currentUser = u;
-    if (u != null) {
-      _isloggedIn = true;
-    }
-    notifyListeners();
+    _db.getUser().then((value) {
+      // print();
+      if (value.isEmpty) {
+      } else {
+        print(value);
+        User _u = User.fromJson(jsonDecode(value[0]['ddata']));
+        _currentUser = _u;
+        _isloggedIn = true;
+        notifyListeners();
+      }
+    });
+    //   print(u.token);
+    //   _currentUser = u;
+    //   if (u != null) {
+    //     _isloggedIn = true;
+    //   }
+    //   notifyListeners();
   }
 }

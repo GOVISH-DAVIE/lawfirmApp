@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hrm_employee/models/clients.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../../constant.dart';
 
-
 class EmployeeDetails extends StatefulWidget {
-  const EmployeeDetails({Key? key}) : super(key: key);
+  final ClientsModel client;
+  const EmployeeDetails({Key? key, required this.client}) : super(key: key);
 
   @override
   _EmployeeDetailsState createState() => _EmployeeDetailsState();
@@ -25,9 +26,15 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
         title: ListTile(
           contentPadding: EdgeInsets.zero,
           leading: Image.asset('images/emp1.png'),
-          title: Text('Sahidul islam',style: kTextStyle.copyWith(color: Colors.white,fontWeight: FontWeight.bold),),
-          subtitle:  Text('Designer',style: kTextStyle.copyWith(color: Colors.white.withOpacity(0.5)),),
-          trailing: const Icon(Icons.close,color: Colors.white,),
+          title: Text(
+            '${widget.client.firstName} ${widget.client.lastName}',
+            style: kTextStyle.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          trailing: const Icon(
+            Icons.close,
+            color: Colors.white,
+          ),
         ),
       ),
       body: Column(
@@ -64,67 +71,73 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 10.0,),
-                          Text('Personal Information',style: kTextStyle.copyWith(fontWeight: FontWeight.bold,fontSize: 20.0),),
-                          const SizedBox(height: 30.0,),
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+                          Text(
+                            'Personal Information',
+                            style: kTextStyle.copyWith(
+                                fontWeight: FontWeight.bold, fontSize: 20.0),
+                          ),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
                           AppTextField(
                             textFieldType: TextFieldType.EMAIL,
                             readOnly: true,
-                            controller: TextEditingController(text: 'maantheme@maantheme.com'),
+                            controller: TextEditingController(
+                                text: '${widget.client.email}'),
                             decoration: const InputDecoration(
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
                               labelText: 'Email Address',
-                              hintText: 'maantheme@maantheme.com',
+                              hintText: 'email',
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(height: 20.0,),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
                           AppTextField(
                             textFieldType: TextFieldType.PHONE,
                             readOnly: true,
-                            controller: TextEditingController(text: '017563985345'),
+                            controller: TextEditingController(
+                                text: '${widget.client.phone}'),
                             decoration: const InputDecoration(
                               labelText: 'Contact No.',
-                              hintText: '017674355654',
+                              hintText: '',
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(height: 20.0,),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
                           AppTextField(
                             textFieldType: TextFieldType.NAME,
                             readOnly: true,
-                            controller: TextEditingController(text: 'Designer'),
+                            controller: TextEditingController(
+                                text: '${widget.client.companyName}'),
                             decoration: const InputDecoration(
-                              labelText: 'Designation',
-                              hintText: 'Designer',
+                              labelText: 'Company',
+                              hintText: '',
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(height: 20.0,),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
                           AppTextField(
                             textFieldType: TextFieldType.NAME,
                             readOnly: true,
-                            controller: TextEditingController(text: 'Bangladeshi'),
+                            controller: TextEditingController(
+                                text: '${widget.client.address}'),
                             decoration: const InputDecoration(
-                              labelText: 'Nationality',
-                              hintText: 'Bangladeshi',
+                              labelText: 'Address',
+                              hintText: '',
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(height: 20.0,),
-                          AppTextField(
-                            textFieldType: TextFieldType.NAME,
-                            readOnly: true,
-                            controller: TextEditingController(text: 'Male'),
-                            decoration: const InputDecoration(
-                              labelText: 'Gender',
-                              hintText: 'Male',
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                          const SizedBox(height: 20.0,),
                         ],
-
                       ),
                     ),
                   ),

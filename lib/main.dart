@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hrm_employee/Screens/Home/home_screen.dart';
 import 'package:hrm_employee/state/geolocateProvider.dart';
 import 'package:hrm_employee/utils/locator.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +49,9 @@ class _MyAppState extends State<MyApp> {
         }),
       ),
       title: 'Maan HRM',
-      home: const SplashScreen(),
+      home: Consumer<Auth>(builder: (context, value, child) {
+        return value.isloggedIn ? const HomeScreen() : const SplashScreen();
+      }),
     );
   }
 }

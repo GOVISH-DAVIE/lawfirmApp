@@ -18,6 +18,13 @@ class Api {
               return st! < 500;
             }));
   }
+
+  Future<Response<List>> getUserData(token) async {
+    return _dio.get(serverUrl + 'app/api/clients/',
+        options: Options(
+            responseType: ResponseType.json,
+            headers: {'Authorization': 'Bearer $token'}));
+  }
   // Future<Token> _token = _db.token();
 
 }

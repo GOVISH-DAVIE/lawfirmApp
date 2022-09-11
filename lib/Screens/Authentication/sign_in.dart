@@ -132,13 +132,16 @@ class _SignInState extends State<SignIn> {
                       buttonDecoration:
                           kButtonDecoration.copyWith(color: kMainColor),
                       onPressed: () {
-                        authController
-                            .login(
-                                pass: _controllerPass.text,
-                                username: _controllerUser.text)
-                            .then((value) {
-                          const HomeScreen().launch(context);
-                        });
+                        authController.getuser();
+                        // authController
+                        //     .login(
+                        //         pass: _controllerPass.text,
+                        //         username: _controllerUser.text)
+                        //     .then((value) {
+                        //   print('signin ${value}');
+
+                        //   // const HomeScreen().launch(context);
+                        // });
                       },
                     ),
                     const SizedBox(
