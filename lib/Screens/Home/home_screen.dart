@@ -404,7 +404,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         image: AssetImage(
                                             'images/employeedirectory.png')),
                                     Text(
-                                      'Employee',
+                                      'Clients',
                                       style: kTextStyle.copyWith(
                                           color: kTitleColor,
                                           fontWeight: FontWeight.bold),

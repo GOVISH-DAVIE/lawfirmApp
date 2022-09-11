@@ -4,7 +4,6 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../constant.dart';
 import 'employee_directory_details.dart';
 
-
 class EmployeeDirectory extends StatefulWidget {
   const EmployeeDirectory({Key? key}) : super(key: key);
 
@@ -18,13 +17,18 @@ class _EmployeeDirectoryState extends State<EmployeeDirectory> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: kMainColor,
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {},
+          label: Row(
+            children: [Icon(Icons.add), Text('Add Client')],
+          )),
       appBar: AppBar(
         backgroundColor: kMainColor,
         elevation: 0.0,
         titleSpacing: 0.0,
         iconTheme: const IconThemeData(color: Colors.white),
         title: Text(
-          'Employee Directory',
+          'Clients Directory',
           maxLines: 2,
           style: kTextStyle.copyWith(
               color: Colors.white, fontWeight: FontWeight.bold),
@@ -54,23 +58,32 @@ class _EmployeeDirectoryState extends State<EmployeeDirectory> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-
                   const SizedBox(
                     height: 20.0,
                   ),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(color: kGreyTextColor.withOpacity(0.5)),
+                      border:
+                          Border.all(color: kGreyTextColor.withOpacity(0.5)),
                     ),
                     child: ListTile(
-                      onTap: (){
+                      onTap: () {
                         const EmployeeDetails().launch(context);
                       },
                       leading: Image.asset('images/emp1.png'),
-                      title: Text('Sahidul islam',style: kTextStyle,),
-                      subtitle:  Text('Joining Date: 01, Jun 2021 ',style: kTextStyle.copyWith(color: kGreyTextColor),),
-                      trailing: const Icon(Icons.arrow_forward_ios,color: kGreyTextColor,),
+                      title: Text(
+                        'Sahidul islam',
+                        style: kTextStyle,
+                      ),
+                      subtitle: Text(
+                        'Joining Date: 01, Jun 2021 ',
+                        style: kTextStyle.copyWith(color: kGreyTextColor),
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: kGreyTextColor,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -79,16 +92,26 @@ class _EmployeeDirectoryState extends State<EmployeeDirectory> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(color: kGreyTextColor.withOpacity(0.5)),
+                      border:
+                          Border.all(color: kGreyTextColor.withOpacity(0.5)),
                     ),
                     child: ListTile(
-                      onTap: (){
+                      onTap: () {
                         const EmployeeDetails().launch(context);
                       },
                       leading: Image.asset('images/emp2.png'),
-                      title: Text('Mehedi Mohammad',style: kTextStyle,),
-                      subtitle:  Text('Joining Date: 01, Jun 2021 ',style: kTextStyle.copyWith(color: kGreyTextColor),),
-                      trailing: const Icon(Icons.arrow_forward_ios,color: kGreyTextColor,),
+                      title: Text(
+                        'Mehedi Mohammad',
+                        style: kTextStyle,
+                      ),
+                      subtitle: Text(
+                        'Joining Date: 01, Jun 2021 ',
+                        style: kTextStyle.copyWith(color: kGreyTextColor),
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: kGreyTextColor,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -97,16 +120,26 @@ class _EmployeeDirectoryState extends State<EmployeeDirectory> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(color: kGreyTextColor.withOpacity(0.5)),
+                      border:
+                          Border.all(color: kGreyTextColor.withOpacity(0.5)),
                     ),
                     child: ListTile(
-                      onTap: (){
+                      onTap: () {
                         const EmployeeDetails().launch(context);
                       },
                       leading: Image.asset('images/emp3.png'),
-                      title: Text('Ibne Riead',style: kTextStyle,),
-                      subtitle:  Text('Joining Date: 01, Jun 2021 ',style: kTextStyle.copyWith(color: kGreyTextColor),),
-                      trailing: const Icon(Icons.arrow_forward_ios,color: kGreyTextColor,),
+                      title: Text(
+                        'Ibne Riead',
+                        style: kTextStyle,
+                      ),
+                      subtitle: Text(
+                        'Joining Date: 01, Jun 2021 ',
+                        style: kTextStyle.copyWith(color: kGreyTextColor),
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: kGreyTextColor,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -115,16 +148,26 @@ class _EmployeeDirectoryState extends State<EmployeeDirectory> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(color: kGreyTextColor.withOpacity(0.5)),
+                      border:
+                          Border.all(color: kGreyTextColor.withOpacity(0.5)),
                     ),
                     child: ListTile(
-                      onTap: (){
+                      onTap: () {
                         const EmployeeDetails().launch(context);
                       },
                       leading: Image.asset('images/emp4.png'),
-                      title: Text('Emily Jones',style: kTextStyle,),
-                      subtitle:  Text('Joining Date: 01, Jun 2021 ',style: kTextStyle.copyWith(color: kGreyTextColor),),
-                      trailing: const Icon(Icons.arrow_forward_ios,color: kGreyTextColor,),
+                      title: Text(
+                        'Emily Jones',
+                        style: kTextStyle,
+                      ),
+                      subtitle: Text(
+                        'Joining Date: 01, Jun 2021 ',
+                        style: kTextStyle.copyWith(color: kGreyTextColor),
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: kGreyTextColor,
+                      ),
                     ),
                   ),
                 ],

@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'Screens/Splash Screen/splash_screen.dart';
 
 import 'package:hrm_employee/sevice/authentication.dart';
+
+import 'package:hrm_employee/state/Client.dart';
 import 'package:hrm_employee/state/auth.dart';
 
 Future<void> main() async {
@@ -15,6 +17,7 @@ Future<void> main() async {
       ChangeNotifierProvider(
           create: (context) => locator<GeolocatorProvider>()),
       ChangeNotifierProvider(create: (context) => locator<Auth>()),
+      ChangeNotifierProvider(create: (context) => locator<ClientsProvider>()),
     ],
     child: const MyApp(),
   ));
