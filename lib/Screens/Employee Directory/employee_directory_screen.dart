@@ -64,13 +64,6 @@ class _EmployeeDirectoryState extends State<EmployeeDirectory> {
                     const SizedBox(
                       height: 20.0,
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        clientsProviderController.getClients();
-                      },
-                      child: Text(
-                          "${clientsProviderController.auth.currentUser?.userId}"),
-                    ),
                     ...clientsProviderController.clients
                         .map(
                           (e) => Container(
