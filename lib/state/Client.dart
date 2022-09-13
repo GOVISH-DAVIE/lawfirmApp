@@ -17,9 +17,10 @@ class ClientsProvider extends ChangeNotifier {
     auth.getuser();
     getClients();
   }
-  getClients() {
-    _api.getUserData(auth.currentUser?.token).then((value) {
+  getClients() async {
+    await _api.getUserData(auth.currentUser?.token).then((value) {
       print(value.data);
+      print('value.data');
       // _clients.
       for (var i = 0; i < value.data!.length; i++) {
         print(i);

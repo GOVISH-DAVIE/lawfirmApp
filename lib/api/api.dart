@@ -20,7 +20,18 @@ class Api {
   }
 
   Future<Response<List>> getUserData(token) async {
-    return _dio.get(serverUrl + 'app/api/clients/',
+    print('token $token');
+    await _dio
+        .get(serverUrl + 'app/api/clients',
+            options: Options(
+                responseType: ResponseType.json,
+                headers: {'Authorization': 'Bearer $token'}))
+        .then((value) {
+      print(value);
+    }).catchError((err) {
+      print(err);
+    });
+    return await _dio.get(serverUrl + 'app/api/clients',
         options: Options(
             responseType: ResponseType.json,
             headers: {'Authorization': 'Bearer $token'}));

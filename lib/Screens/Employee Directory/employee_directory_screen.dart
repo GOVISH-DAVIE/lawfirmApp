@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hrm_employee/Screens/Employee%20Directory/addClient.dart';
 import 'package:hrm_employee/state/Client.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:provider/provider.dart';
@@ -17,13 +18,17 @@ class _EmployeeDirectoryState extends State<EmployeeDirectory> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ClientsProvider>(
-      builder: (context, clientsProviderController, child) => Scaffold(
+        builder: (context, clientsProviderController, child) {
+      // clientsProviderController.getClients();
+      return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: kMainColor,
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: () {},
+            onPressed: () {
+              const AddClient().launch(context);
+            },
             label: Row(
-              children: [Icon(Icons.add), Text('Add Client')],
+              children: const [Icon(Icons.add), Text('Add Client')],
             )),
         appBar: AppBar(
           backgroundColor: kMainColor,
@@ -111,7 +116,7 @@ class _EmployeeDirectoryState extends State<EmployeeDirectory> {
             ),
           ],
         ),
-      ),
-    );
+      );
+    });
   }
 }
